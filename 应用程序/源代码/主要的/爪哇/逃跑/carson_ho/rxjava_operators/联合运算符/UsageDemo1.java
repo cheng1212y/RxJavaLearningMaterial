@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+
+
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -32,7 +34,7 @@ public class UsageDemo1 extends AppCompatActivity {
          * 设置第1个Observable：检查内存缓存是否有该数据的缓存
          **/
         Observable<String> memory = Observable.create(new ObservableOnSubscribe<String>() {
-            @Override
+            @Override  
             public void subscribe(ObservableEmitter<String> emitter) throws Exception {
 
                 // 先判断内存缓存有无数据
@@ -77,7 +79,10 @@ public class UsageDemo1 extends AppCompatActivity {
          * 通过concat（） 和 firstElement（）操作符实现缓存功能
          **/
 
-        // 1. 通过concat（）合并memory、disk、network 3个被观察者的事件（即检查内存缓存、磁盘缓存 & 发送网络请求）
+        // 1. 通过concat（）合并memory、disk、network 3个被观察者的事件（即检查内存缓存、磁盘缓存 & 发送网络请求
+        
+        
+        
         //    并将它们按顺序串联成队列
         Observable.concat(memory, disk, network)
                 // 2. 通过firstElement()，从串联队列中取出并发送第1个有效事件（Next事件），即依次判断检查memory、disk、network
